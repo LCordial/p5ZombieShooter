@@ -1,6 +1,6 @@
 class Player {
     constructor(){
-        this.r = 50;
+        this.r = 43;
         this.width = 10;
         this.speed = 8;
     }
