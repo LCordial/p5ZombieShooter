@@ -1,5 +1,5 @@
 # Zombie Shooter [Working Title]
-A Simple Zombie Shootinmg project using p5 for Digital Technologies class. The aim of the game is to get as far as possible without dying. Each wave of zombies gets exponentially harder. With new guns and unlocks to be found throughout the game.
+A Simple Zombie Shooting project using p5 for Digital Technologies class. The aim of the game is to get as far as possible without dying. Each wave of zombies gets exponentially harder. With new guns and unlocks to be found throughout the game.
 
 # Technology
 - Javascript Tech
