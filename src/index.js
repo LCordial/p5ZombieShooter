@@ -1,3 +1,5 @@
+/// <reference path="./modules/p5.d.ts" />
+
 //Creating Variables
 var playerController; //Contains the Player.js class
 var originalFr = 60; // Capping Frame Rate
