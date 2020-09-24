@@ -7,7 +7,7 @@ class Enemy {
     }
     renderEnemy(){
         //Drawing Player
-        stroke(this.randomColor);
+        stroke(255);
         strokeWeight(4);
         ellipse(100,100, this.r * 2)
     }
