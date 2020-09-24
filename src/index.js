@@ -2,6 +2,8 @@
 
 //Creating Variables
 var playerController; //Contains the Player.js class
+var enemyController;
+
 var originalFr = 60; // Capping Frame Rate
 
 
@@ -16,6 +18,7 @@ function setup() {
   frameRate(originalFr); 
   //Classes
   playerController = new Player();
+  enemyController = new Enemy();
 }
 //Changing Canvas Size on window resize
 function windowResized(){
@@ -33,4 +36,6 @@ function draw() {
   
   //Rendering Player and Enabling Player Controller
   playerController.show();
+  enemyController.renderEnemy();
+  
 }
