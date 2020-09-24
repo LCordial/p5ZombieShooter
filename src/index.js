@@ -27,12 +27,12 @@ function windowResized(){
 
 function draw() {
   //Rounding Frames
-  var roundedFrame = Math.round(frameRate())
+ //var roundedFrame = Math.round(frameRate())
 
   //Drawning Canvas Background every frame
   background("#e0e0e0");
-  textSize(20);
-  text(roundedFrame, 10, 30)
+  //textSize(20);
+  //text(roundedFrame, 10, 30)
   
   //Rendering Player and Enabling Player Controller
   playerController.show();
