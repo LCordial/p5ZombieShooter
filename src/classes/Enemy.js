@@ -1,14 +1,16 @@
 class Enemy {
     constructor(){
-        this.r = Math.floor(Math.random() * 30) + 25;
-        this.width = 10;
+        this.r = Math.floor(Math.random() * 25) + 20;
 
-        this.randomColor = color(random(255),random(255),random(255));
+
+        //this.randomColor = color(random(255),random(255),random(255));
     }
     renderEnemy(){
+
         //Drawing Player
-        stroke(255);
+        stroke("#c9001b");
         strokeWeight(4);
-        ellipse(100,100, this.r * 2)
+        ellipse(100,100, this.r * 2);
+
     }
 }

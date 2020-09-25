@@ -6,7 +6,6 @@ var enemyController;
 
 var originalFr = 60; // Capping Frame Rate
 
-
 function preload(){
 
 }

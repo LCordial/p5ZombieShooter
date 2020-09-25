@@ -17,6 +17,7 @@ class Player {
         const angle = Math.atan2(mouseY-posY, mouseX-posX);
         translate(posX, posY);
         rotate(angle);
+
         //Drawning Weapon
         stroke("#5c5c5c");
         strokeWeight(4);
