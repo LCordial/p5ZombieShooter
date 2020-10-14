@@ -1,8 +1,13 @@
 class Player {
     constructor(){
-        this.r = 43;
+
+        this.r = 40;
         this.width = 10;
         this.speed = 8;
+
+        this.x = 0;
+        this.y = 0;
+        
     }
 
     show(){
@@ -28,7 +33,7 @@ class Player {
         stroke("#0891a1");
         strokeWeight(4);
         ellipseMode(CENTER);
-        ellipse(0, 0, this.r*2,);
+        ellipse(this.x, this.y, this.r*2,);
 
         pop();
         
