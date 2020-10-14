@@ -10,10 +10,12 @@ class Enemy {
 
     }
     renderEnemy(){
+
         //Drawing Player
         stroke("#c9001b");
         strokeWeight(4);
         ellipse(100,100, this.r * 2);
+        
     }
     moveToPlayer(){
 
