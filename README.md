@@ -1,14 +1,19 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Zombie Shooter ![License: MIT](https://img.shields.io/badge/license-MIT-brightgreen) ![GitHub issues](https://img.shields.io/github/issues/LCordial/p5ZombieShooter)
+`Zombie Shooter` is a survival game inspired by DIEP.io
 
-# Zombie Shooter [Working Title]
-A Simple Zombie Shooting project using p5 for Digital Technologies class. The aim of the game is to get as far as possible without dying. Each wave of zombies gets exponentially harder, with new guns to be found throughout the game.
+# Installation
+Clone the repository onto your local computer using [git](https://git-scm.com/)
+```
+https://github.com/LCordial/p5ZombieShooter.git
+```
 
-# Technology
-- Javascript Tech
-     - [p5.js](https://p5js.org/)
-     - [p5 2D Collide](https://github.com/bmoren/p5.collide2D)
-- Hosting Tech
-     - [Firebase hosting](https://firebase.google.com/)
+# Packages
+* [p5](https://p5js.org/)
+* [Collide 2D](https://github.com/bmoren/p5.collide2D)
+* [Firebase hosting](https://firebase.google.com/)
+
+# Compatibility
+Zombie Shooter is compatible on [Google Chrome](https://www.google.com/intl/en_au/chrome/)
 
 # License
-MIT License located [here](https://github.com/LCordial/p5ZombieShooter/blob/master/LICENSE)
+[MIT](https://github.com/LCordial/p5ZombieShooter/blob/master/LICENSE)
