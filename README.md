@@ -1,6 +1,9 @@
 # Zombie Shooter ![License: MIT](https://img.shields.io/badge/license-MIT-brightgreen) ![GitHub issues](https://img.shields.io/github/issues/LCordial/p5ZombieShooter)
 `Zombie Shooter` is a survival game inspired by DIEP.io
 
+# How to play
+The game will get harder throughout your playthrough, with an increase of enemy spawn rate with health increases. Get as far as possible without dying.
+
 # Installation
 Clone the repository onto your local computer using [git](https://git-scm.com/)
 ```
