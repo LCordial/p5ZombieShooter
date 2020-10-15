@@ -6,8 +6,8 @@ var enemyController;
 
 var originalFr = 60; // Capping Frame Rate
 
-var canvasX = 1200;
-var canvasY = 800;
+var canvasX = 1340;
+var canvasY = 780;
 
 function preload(){
 
@@ -39,9 +39,7 @@ function draw() {
   //textSize(20);
   //text(roundedFrame, 10, 30)
   
-  //Rendering Player and Enabling Player Controller
-  playerController.angleCalculation();
-  playerController.show();
-  enemyController.renderEnemy();
+  //Rendering Player
+  playerController.renderPlayer()
   
 }
