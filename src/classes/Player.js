@@ -1,42 +1,97 @@
 class Player {
     constructor(){
 
+        //Position Variables
         this.r = 40;
-        this.width = 10;
-        this.speed = 8;
+        this.width = 75;
+        this.height = 75
+        this.x = canvasX / 2;
+        this.y = canvasY / 2;
 
-        this.x = 0;
-        this.y = 0;
-        
+        //Movement Variables
+        this.angle = 0;
+        this.speed = 8;
+        this.yVelocity = 0;
+        this.xVelocity = 0;
+        this.acceleration = 0.3;
+        this.drag = 0.1;
+        this.maxSpeed = 7;
+
+        //Keybinds
+        this.wKey = 87;
+        this.aKey = 83;
+        this.sKey = 65;
+        this.dKey = 68;
+
+    }
+
+    angleCalculation(){
+        //Using atan2 to calculate angle from position to mouse
+        this.angle = Math.atan2( this.x - mouseX, this.y - mouseY) * -1; //Multiplying by -1 to change direction
     }
 
     show(){
 
+        //Pushing and popping so only player is affected by these translating ect.
         push();
 
-        //Creating Variables
-        const posX = width / 2;
-        const posY = height / 2;
-
-        //Grabbing Vector from mouse position and position
-        const angle = Math.atan2(mouseY-posY, mouseX-posX);
-        translate(posX, posY);
-        rotate(angle);
+        
+        translate(this.x, this.y); //Translating to the position (x & y)
+        rotate(this.angle); //Rotating character with 'angle' variable
 
         //Drawning Weapon
         stroke("#5c5c5c");
         strokeWeight(4);
-        rectMode(CENTER);
-        rect(50, 0, 50, 20);
+        rect(0,0 + -40, 20, 50);
         
         //Drawning Player
         stroke("#0891a1");
         strokeWeight(4);
-        ellipseMode(CENTER);
-        ellipse(this.x, this.y, this.r*2,);
+        ellipse(this.x / 10000, this.y / 10000, this.width, this.height);
 
         pop();
         
+    }
+
+    playerController(){
+
+        //Checking if key is down and taking away acceleration from the y/x velocity
+        if (keyIsDown(this.wKey)){
+            this.yVelocity -= this.acceleration;
+        }
+        if (keyIsDown(this.aKey)){
+            this.yVelocity += this.acceleration;
+        }
+        if (keyIsDown(this.sKey)){
+            this.xVelocity -= this.acceleration;
+        }
+        if (keyIsDown(this.dKey)){
+            this.xVelocity += this.acceleration;
+        }
+        
+        for(let axis = 'x'; true; axis = 'y'){
+
+            if (((this[axis + "Velocity"] < this.drag) && (this[axis + "Velocity"] > this.drag * -1))){this[axis + "Velocity"] = 0;} 
+
+            else if (this[axis + "Velocity"] > 0){this[axis + "Velocity"] -= this.drag;}
+
+            else if (this[axis + "Velocity"] < 0){this[axis + "Velocity"] += this.drag;}
+
+            if (this[axis + "Velocity"] < (this.maxSpeed * -1)){this[axis + "Velocity"] = this.maxSpeed * -1;}
+
+            else if (this[axis + "Velocity"] > (this.maxSpeed)){this[axis + "Velocity"] = this.maxSpeed;}
+
+            this[axis] += this[axis + "Velocity"];
+
+            if (axis === 'y'){break;}
+            
+        }
+    } 
+
+    renderPlayer(){
+        this.angleCalculation()
+        this.playerController()
+        this.show()
     }
 
 }
