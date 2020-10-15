@@ -70,25 +70,21 @@ class Player {
         }
         
         for(let axis = 'x'; true; axis = 'y'){
-            if (((this[`${axis}Velocity`] < this.drag) && (this[`${axis}velocity`] > this.drag * -1))){
-                this[`${axis}Velocity`] = 0;
-            } 
-            else if (this[`${axis}Velocity`] > 0){
-                this[`${axis}Velocity`] -= this.drag;
-            }
-            else if (this[`${axis}Velocity`] < 0){
-                this[`${axis}Velocity`] += this.drag;
-            }
-            if (this[`${axis}Velocity`] < (this.maxSpeed * -1)){
-                this[`${axis}Velocity`] = this.maxSpeed * -1;
-            }
-            else if (this[`${axis}Velocity`] > (this.maxSpeed)){
-                this[`${axis}Velocity`] = this.maxSpeed;
-            }
-            this[`${axis}`] += this[`${axis}Velocity`];
-            if (axis === 'y'){
-                break;
-            }
+
+            if (((this[axis + "Velocity"] < this.drag) && (this[axis + "Velocity"] > this.drag * -1))){this[axis + "Velocity"] = 0;} 
+
+            else if (this[axis + "Velocity"] > 0){this[axis + "Velocity"] -= this.drag;}
+
+            else if (this[axis + "Velocity"] < 0){this[axis + "Velocity"] += this.drag;}
+
+            if (this[axis + "Velocity"] < (this.maxSpeed * -1)){this[axis + "Velocity"] = this.maxSpeed * -1;}
+
+            else if (this[axis + "Velocity"] > (this.maxSpeed)){this[axis + "Velocity"] = this.maxSpeed;}
+
+            this[axis] += this[axis + "Velocity"];
+
+            if (axis === 'y'){break;}
+            
         }
     } 
 
