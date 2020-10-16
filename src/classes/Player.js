@@ -23,6 +23,10 @@ class Player {
         this.sKey = 65;
         this.dKey = 68;
 
+        //Health
+        this.health = 5;
+        this.ammo = 20;
+
     }
 
     angleCalculation(){
@@ -49,6 +53,7 @@ class Player {
         strokeWeight(4);
         ellipse(this.x / 10000, this.y / 10000, this.width, this.height);
 
+
         pop();
         
     }
@@ -57,16 +62,20 @@ class Player {
 
         //Checking if key is down and taking away acceleration from the y/x velocity
         if (keyIsDown(this.wKey)){
-            this.yVelocity -= this.acceleration;
+            if(this.y + (-1*20) > 0)
+                this.yVelocity -= this.acceleration;
         }
         if (keyIsDown(this.aKey)){
-            this.yVelocity += this.acceleration;
+            if(this.y + (1*20) < height)
+                this.yVelocity += this.acceleration;
         }
         if (keyIsDown(this.sKey)){
-            this.xVelocity -= this.acceleration;
+            if(this.x + (-1*20) > 0)
+                this.xVelocity -= this.acceleration;
         }
         if (keyIsDown(this.dKey)){
-            this.xVelocity += this.acceleration;
+            if(this.x + (1*20) < width)
+             this.xVelocity += this.acceleration;
         }
         
         for(let axis = 'x'; true; axis = 'y'){
