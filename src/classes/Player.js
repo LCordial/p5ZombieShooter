@@ -23,9 +23,11 @@ class Player {
         this.sKey = 65;
         this.dKey = 68;
 
-        //Health
+        //Information Variables
         this.health = 5;
         this.ammo = 20;
+        this.kills = 0;
+        this.waves = 0;
 
     }
 
@@ -39,7 +41,6 @@ class Player {
         //Pushing and popping so only player is affected by these translating ect.
         push();
 
-        
         translate(this.x, this.y); //Translating to the position (x & y)
         rotate(this.angle); //Rotating character with 'angle' variable
 
@@ -52,7 +53,6 @@ class Player {
         stroke("#0891a1");
         strokeWeight(4);
         ellipse(this.x / 10000, this.y / 10000, this.width, this.height);
-
 
         pop();
         
@@ -97,10 +97,20 @@ class Player {
         }
     } 
 
+    // playerTest(){
+    //     if (keyIsDown()){
+    //         if(keyCode === SHIFT){
+    //             this.health -= 1;
+    //         }
+            
+    //     }
+    // }
+
     renderPlayer(){
         this.angleCalculation()
         this.playerController()
         this.show()
+        //this.playerTest()
     }
 
 }
