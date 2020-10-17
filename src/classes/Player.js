@@ -23,6 +23,12 @@ class Player {
         this.sKey = 65;
         this.dKey = 68;
 
+        //Information Variables
+        this.health = 5;
+        this.ammo = 20;
+        this.kills = 0;
+        this.waves = 0;
+
     }
 
     angleCalculation(){
@@ -35,7 +41,6 @@ class Player {
         //Pushing and popping so only player is affected by these translating ect.
         push();
 
-        
         translate(this.x, this.y); //Translating to the position (x & y)
         rotate(this.angle); //Rotating character with 'angle' variable
 
@@ -57,16 +62,20 @@ class Player {
 
         //Checking if key is down and taking away acceleration from the y/x velocity
         if (keyIsDown(this.wKey)){
-            this.yVelocity -= this.acceleration;
+            if(this.y + (-1*20) > 0)
+                this.yVelocity -= this.acceleration;
         }
         if (keyIsDown(this.aKey)){
-            this.yVelocity += this.acceleration;
+            if(this.y + (1*20) < height)
+                this.yVelocity += this.acceleration;
         }
         if (keyIsDown(this.sKey)){
-            this.xVelocity -= this.acceleration;
+            if(this.x + (-1*20) > 0)
+                this.xVelocity -= this.acceleration;
         }
         if (keyIsDown(this.dKey)){
-            this.xVelocity += this.acceleration;
+            if(this.x + (1*20) < width)
+             this.xVelocity += this.acceleration;
         }
         
         for(let axis = 'x'; true; axis = 'y'){
@@ -88,10 +97,20 @@ class Player {
         }
     } 
 
+    // playerTest(){
+    //     if (keyIsDown()){
+    //         if(keyCode === SHIFT){
+    //             this.health -= 1;
+    //         }
+            
+    //     }
+    // }
+
     renderPlayer(){
         this.angleCalculation()
         this.playerController()
         this.show()
+        //this.playerTest()
     }
 
 }
