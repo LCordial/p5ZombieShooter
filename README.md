@@ -15,7 +15,7 @@ https://github.com/LCordial/p5ZombieShooter.git
 > Once the `pre-release` branch has been downloaded onto your local system, open the `index.html` file
 ##### WARNING: Pre-release may be broken and/or not working. Use with caution
 ### Current release
-> Go to [zombiegame.ambience.studio](zombiegame.ambience.studio) for the current release
+> Go to [zombiegame.ambience.studio](https://zombiegame.ambience.studio/) for the current release
 
 # Packages
 * [p5](https://p5js.org/)
