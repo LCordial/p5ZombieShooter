@@ -9,15 +9,26 @@ class Enemy {
         this.enemySpeed = 4;
 
     }
-    renderEnemy(){
+    show(){
+
+        push()
 
         //Drawing Player
         stroke("#c9001b");
         strokeWeight(4);
         ellipse(100,100, this.r * 2);
+
+        pop();
+
+    }
+
+    renderEnemy(){
+
+        this.show();
         
     }
     moveToPlayer(){
 
     }
+    
 }

@@ -97,20 +97,10 @@ class Player {
         }
     } 
 
-    // playerTest(){
-    //     if (keyIsDown()){
-    //         if(keyCode === SHIFT){
-    //             this.health -= 1;
-    //         }
-            
-    //     }
-    // }
-
     renderPlayer(){
         this.angleCalculation()
         this.playerController()
         this.show()
-        //this.playerTest()
     }
 
 }

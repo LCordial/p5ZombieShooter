@@ -53,9 +53,11 @@ class PlayerUI{
     }
 
     renderGUI(){
+
         this.HealthGUI();
         this.AmmoGUI();
         this.waveGUI();
         this.killsGUI()
+        
     }
 }

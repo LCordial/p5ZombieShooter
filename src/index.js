@@ -25,6 +25,8 @@ function setup() {
   //Changing Modes
   rectMode(CENTER);
   angleMode(RADIANS);
+
+  console.log("Setup Finished")
 }
 
 function draw() {
@@ -37,7 +39,7 @@ function draw() {
   text(roundedFrame, 10, 30)
   
   //Rendering Player
-  playerController.renderPlayer()
-  playerUI.renderGUI()
-  
+  enemyController.renderEnemy();
+  playerController.renderPlayer();
+  playerUI.renderGUI();
 }
