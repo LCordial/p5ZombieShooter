@@ -5,13 +5,13 @@ class Enemy {
         this.y = 0;
         this.x = 0;
         
-        this.enemySpeed = 4;
+        this.speed = 1;
+        this.damage = 1;
 
-    }
+        this.hit = false;
 
-    calculatePlayerRotation(){
-
-        this.rotation = atan2(this.y - this.playerY, this.x - this.playerX) * -1;
+        this.enemy;
+        this.player;
 
     }
 
@@ -19,7 +19,7 @@ class Enemy {
 
         push()
 
-        //rotate(this.rotation);
+        rotate(this.rotation);
 
         translate(this.x, this.y)
 
@@ -32,10 +32,37 @@ class Enemy {
 
     }
 
+    movement(){
+
+        this.playery = playerController.y;
+        this.playerx = playerController.x;
+
+        if (this.playerx > this.x){
+            this.x += this.speed;
+        } else {
+            this.x -= this.speed;
+        }
+        if (this.playery > this.y){
+            this.y += this.speed;
+        } else{
+            this.y -= this.speed;
+        }
+
+        this.enemy.position(x, y);
+
+        if(this.enemy.overlap(player)){
+            playerController.health -= damage;
+            this.hit = true;
+        }else{
+            this.hit = false;
+        }
+
+    }
+
     renderEnemy(){
 
-        this.calculatePlayerRotation();
         this.show();
+        this.movement();
         
     }
     
