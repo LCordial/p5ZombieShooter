@@ -7,7 +7,7 @@ The game will get harder throughout your playthrough, with an increase of enemy 
 # Installation
 Clone the repository onto your local computer using [git](https://git-scm.com/)
 ```
-https://github.com/LCordial/p5ZombieShooter.git
+git clone https://github.com/LCordial/p5ZombieShooter.git
 ```
 
 # Use
