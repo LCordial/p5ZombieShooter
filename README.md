@@ -17,6 +17,12 @@ git clone https://github.com/LCordial/p5ZombieShooter.git
 ### Current release
 > Go to [tanks.ambience.studio](https://tanks.ambience.studio/) for the current release
 
+# Development
+Help development by joining the Ambience Studios discord server.
+
+# Assets
+All assests were drawn using p5.js.
+
 # Packages
 * [p5](https://p5js.org/)
 * [Collide 2D](https://github.com/bmoren/p5.collide2D)
