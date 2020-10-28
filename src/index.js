@@ -3,15 +3,13 @@
 //Creating Variables
 var playerController; //Contains the Player.js class
 var enemyController;
+var playerUI;
+var bullet;
 
 var originalFr = 60; // Capping Frame Rate
 
 var canvasX = 1368;
 var canvasY = 780;
-
-function preload(){
-
-}
 
 function setup() {
   //Window Width of Canvas
@@ -22,6 +20,7 @@ function setup() {
   playerController = new Player();
   enemyController = new Enemy();
   playerUI = new PlayerUI();
+  bullet = new Bullet();
   //Changing Modes
   rectMode(CENTER);
   angleMode(RADIANS);
@@ -34,12 +33,12 @@ function draw() {
   var roundedFrame = Math.round(frameRate())
 
   //Drawning Canvas Background every frame
-  background("#fffff")
+  background("#d9d9d9")
   textSize(20);
   text(roundedFrame, 10, 30)
   
   //Rendering Player
-  enemyController.renderEnemy();
   playerController.renderPlayer();
   playerUI.renderGUI();
+  enemyController.renderEnemy();
 }

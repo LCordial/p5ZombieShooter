@@ -60,6 +60,7 @@ class Enemy {
 
         if(hit){
             console.log(`${hit} & ${this.playerHealth}`);
+            
             this.playerHealth -= this.damage;
             playerUI.HealthGUI();        
         }else{

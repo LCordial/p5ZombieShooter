@@ -29,6 +29,7 @@ class Player {
         this.ammo = 20;
         this.kills = 0;
         this.waves = 0;
+        this.score = 0;
 
     }
 
@@ -79,6 +80,7 @@ class Player {
              this.xVelocity += this.acceleration;
         }
         
+        // For true loop. Yep... I know
         for(let axis = 'x'; true; axis = 'y'){
 
             if (((this[axis + "Velocity"] < this.drag) && (this[axis + "Velocity"] > this.drag * -1))){this[axis + "Velocity"] = 0;} 

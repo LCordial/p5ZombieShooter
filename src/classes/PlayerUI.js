@@ -7,7 +7,7 @@ class PlayerUI{
     }
     
     HealthGUI(){
-        
+       
         push();
 
         textSize(35);
@@ -28,15 +28,16 @@ class PlayerUI{
         pop();
         
     }
-    AmmoGUI(){
 
-        push();
+    // AmmoGUI(){
 
-        textSize(25);
-        text(`${this.PlayerAmmo}`, playerController.x -12, playerController.y + 65);
+    //     push();
 
-        pop();
-    }
+    //     textSize(25);
+    //     text(`${this.PlayerAmmo}`, playerController.x -12, playerController.y + 65);
+
+    //     pop();
+    // }
 
     waveGUI(){
 
@@ -55,7 +56,7 @@ class PlayerUI{
     renderGUI(){
 
         this.HealthGUI();
-        this.AmmoGUI();
+        //this.AmmoGUI();
         this.waveGUI();
         this.killsGUI()
         
