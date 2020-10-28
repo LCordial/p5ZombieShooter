@@ -1,17 +1,18 @@
 class Enemy {
     constructor(){
 
+        //Creating different size enemys
         this.r = Math.floor(Math.random() * 25) + 20;
         this.y = 0;
         this.x = 0;
         
+        //Movement variables
         this.speed = 1;
+
+        //Information variables
         this.damage = 1;
+        this.playerHealth = playerController.health;
 
-        this.hit = false;
-
-        this.enemy;
-        this.player;
 
     }
 
@@ -36,6 +37,7 @@ class Enemy {
 
         this.playery = playerController.y;
         this.playerx = playerController.x;
+        this.playerr = playerController.r;
 
         if (this.playerx > this.x){
             this.x += this.speed;
@@ -48,13 +50,20 @@ class Enemy {
             this.y -= this.speed;
         }
 
-        this.enemy.position(x, y);
+    }
 
-        if(this.enemy.overlap(player)){
-            playerController.health -= damage;
-            this.hit = true;
+    checkCollision(){
+        
+        var hit = false;
+
+        hit = collideCircleCircle(this.x, this.y, this.r * 2, this.playerx, this.playery, this.playerr * 2);
+
+        if(hit){
+            console.log(`${hit} & ${this.playerHealth}`);
+            this.playerHealth -= this.damage;
+            playerUI.HealthGUI();        
         }else{
-            this.hit = false;
+            console.log(`${hit}`);
         }
 
     }
@@ -63,6 +72,7 @@ class Enemy {
 
         this.show();
         this.movement();
+        this.checkCollision();
         
     }
     

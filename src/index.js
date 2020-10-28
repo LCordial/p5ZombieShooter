@@ -34,7 +34,7 @@ function draw() {
   var roundedFrame = Math.round(frameRate())
 
   //Drawning Canvas Background every frame
-  background("#e0e0e0");
+  background("#fffff")
   textSize(20);
   text(roundedFrame, 10, 30)
   

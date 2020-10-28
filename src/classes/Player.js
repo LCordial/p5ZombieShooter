@@ -8,6 +8,7 @@ class Player {
         this.x = canvasX / 2;
         this.y = canvasY / 2;
 
+
         //Movement Variables
         this.angle = 0;
         this.speed = 8;
@@ -24,7 +25,7 @@ class Player {
         this.dKey = 68;
 
         //Information Variables
-        this.health = 5;
+        this.health = 100;
         this.ammo = 20;
         this.kills = 0;
         this.waves = 0;
@@ -52,7 +53,7 @@ class Player {
         //Drawning Player
         stroke("#0891a1");
         strokeWeight(4);
-        ellipse(this.x / 10000, this.y / 10000, this.width, this.height);
+        ellipse(this.x / 10000, this.y / 10000, this.width, this.height); // Dividing by this number because I just pulled a random number out of my ass
 
         pop();
         
@@ -98,9 +99,11 @@ class Player {
     } 
 
     renderPlayer(){
+
         this.angleCalculation()
         this.playerController()
         this.show()
+
     }
 
 }
