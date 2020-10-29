@@ -5,19 +5,24 @@ var score = 0;
 let keepbullets = []
 let anyhit = false;
 
-for (let i=0; i < bullets.length; ++ i) {
+function forLoop(){
+    for (let i=0; i < bullets.length; ++ i) {
     
-    bullets[i].toMouse()
-    let hit = dist(bullets[i].x, bullets[i].y, enemy.x, enemy.y) <= enemy.r;
-    anyhit = anyhit || hit
-    if (!hit && bullets[i].onScreen()) {
-        keepbullets.push(bullets[i]);
-        bullets[i].show();
-    }
+        bullets[i].toMouse()
+    
+        let hit = dist(bullets[i].x, bullets[i].y, enemyController.x, enemyController.y) <= enemyController.r;
+        anyhit = anyhit || hit
+        if (!hit && bullets[i].onScreen()) {
+            console.log("if statement in for loop")
+            keepbullets.push(bullets[i]);
+            bullets[i].show();
+        }
+    }   
 }
+
 bullets = keepbullets;
+
 if (anyhit) {
-    enemy = new Enemy();
     score += 100;
 }
 
@@ -39,17 +44,20 @@ function Bullet(X,Y,PX,PY){
     this.r = 5;
     
     this.show = function(){
-    fill(255,255,0);
-    stroke(128,128,0);
-    circle(this.x,this.y,this.r);
+        fill(255,255,0);
+        stroke(128,128,0);
+        circle(this.x,this.y,this.r);
     }
+
     this.toMouse = function() {
         this.x += this.dir.x * this.speed;
         this.y += this.dir.y * this.speed;
     }
     
     this.onScreen = function() {
-    return this.x > -this.r && this.x < width+this.r && this.y > -this.r && this.y < height+this.r;
+        console.log("On Screen")
 
+        return this.x > -this.r && this.x < width+this.r && this.y > -this.r && this.y < height+this.r;
     }
+
 }

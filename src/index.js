@@ -4,7 +4,6 @@
 var playerController; //Contains the Player.js class
 var enemyController;
 var playerUI;
-var bullet;
 
 var originalFr = 60; // Capping Frame Rate
 
@@ -20,7 +19,6 @@ function setup() {
   playerController = new Player();
   enemyController = new Enemy();
   playerUI = new PlayerUI();
-  bullet = new Bullet();
   //Changing Modes
   rectMode(CENTER);
   angleMode(RADIANS);
@@ -36,7 +34,9 @@ function draw() {
   background("#d9d9d9")
   textSize(20);
   text(roundedFrame, 10, 30)
-  
+
+  forLoop();
+
   //Rendering Player
   playerController.renderPlayer();
   playerUI.renderGUI();
