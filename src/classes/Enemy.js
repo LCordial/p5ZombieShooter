@@ -7,7 +7,7 @@ class Enemy {
         this.x = 0;
         
         //Movement variables
-        this.speed = 1;
+        this.speed = 2;
 
         //Information variables
         this.damage = 1;
@@ -20,9 +20,9 @@ class Enemy {
 
         push()
 
-        rotate(this.rotation);
+        rotate(this.rotation); //Useless rotation that doesn't do anything
 
-        translate(this.x, this.y)
+        translate(this.x, this.y) //Translating thingy
 
         //Drawing Player
         stroke("#c9001b");
@@ -35,10 +35,12 @@ class Enemy {
 
     movement(){
 
+        // Grabbing player size and position every frame
         this.playery = playerController.y;
         this.playerx = playerController.x;
         this.playerr = playerController.r;
 
+        // Make player go in direction of player
         if (this.playerx > this.x){
             this.x += this.speed;
         } else {
@@ -56,8 +58,10 @@ class Enemy {
         
         var hit = false;
 
+        // Making hit variable into Collide 2D external library
         hit = collideCircleCircle(this.x, this.y, this.r * 2, this.playerx, this.playery, this.playerr * 2);
 
+        // If bullet has hit change playerHealth by player damage, else don't do anything
         if(hit){
             console.log(`${hit} & ${this.playerHealth}`);
             

@@ -1,23 +1,27 @@
 class PlayerUI{
     constructor(){
+
         this.Playerhealth = playerController.health;
         this.PlayerAmmo = playerController.ammo;
         this.PlayerWave = playerController.waves;
         this.PlayerKills = playerController.kills;
+        
     }
     
     HealthGUI(){
        
         push();
 
+        textAlign(CENTER, CENTER)
+
         textSize(35);
 
         //Changing color of health text once health has reached certain threshold
         if(this.Playerhealth >= 1){
             fill("#f54a00");
-            if(this.Playerhealth >= 2){
+            if(this.Playerhealth >= 25){
                 fill("#f5c000")
-                if(this.Playerhealth >= 3){
+                if(this.Playerhealth >= 50){
                     fill("#08cc33");
                 }
             }
@@ -29,15 +33,16 @@ class PlayerUI{
         
     }
 
-    // AmmoGUI(){
+    AmmoGUI(){
 
-    //     push();
+        push();
 
-    //     textSize(25);
-    //     text(`${this.PlayerAmmo}`, playerController.x -12, playerController.y + 65);
+        textSize(25);
+        text(`${this.PlayerAmmo}`, playerController.x -12, playerController.y + 65);
 
-    //     pop();
-    // }
+        pop();
+        
+    }
 
     waveGUI(){
 
@@ -50,6 +55,12 @@ class PlayerUI{
 
         textSize(40);
         text(`${this.PlayerKills} kills`, 250, 50)
+
+    }
+
+    scoreGUI(){
+
+        textSize(40);
 
     }
 
