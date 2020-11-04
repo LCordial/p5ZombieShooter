@@ -11,9 +11,12 @@ var canvasX = 1368;
 var canvasY = 780;
 
 var bullets = [];
+var enemies = [];
 
 var score = 0;
 let frames = 60;
+
+
 
 function setup() {
 
@@ -40,16 +43,19 @@ function draw() {
   
   // Bullet Variables
   let keepbullets = []
-  let anyhit = false;
-  
-  // Rounding Frames
-  var roundedFrame = Math.round(frameRate())
+  let anyBullethit = false;
+
+  // Enemy Variables
+  let keepenemy = []
+  let anyEnemyhit = false;
 
   // Drawning Canvas Background every frame
   background("#d9d9d9")
   textSize(20);
   text(Math.round(frames), 20, 30);
+  text("");
 
+  // Bullet for loop \\
 
   // Traverse the bullets in the draw function. Check if a bullet has hit an enemy or has left the screen. Keep the bullets for next run of draw
   for (let i=0; i < bullets.length; ++ i) {
@@ -57,7 +63,7 @@ function draw() {
     bullets[i].toMouse()
 
     let hit = dist(bullets[i].x, bullets[i].y, enemyController.x, enemyController.y) <= enemyController.r;
-    anyhit = anyhit || hit
+    anyBullethit = anyBullethit || hit
 
     // If bullets didn't hit and bullets are on screen then push bullets into keepbullets and show all bullets in array
     if (!hit && bullets[i].onScreen()) {
@@ -66,18 +72,39 @@ function draw() {
     }
     bullets = keepbullets;
 
-    if (anyhit) {
+    if (anyBullethit) {
       score += 100;
   }
+
 } 
+
+  // Player for loop \\
+
+  for (let i=0; i < enemies.length; ++ i){
+
+    enemies[i].toPlayer()
+
+    let hit = dist(enemies[i].x, enemies[i].y, playerController.x, playerController.y) <= playerController.r
+    anyEnemyhit = anyEnemyhit || hit;
+
+    if (!hit && enemies[i].EnemyonScreen()){
+      keepenemy.push(enemies[i]);
+      enemies[i].showEnemy();
+
+      console.log("no hit")
+    }
+    enemies = keepenemy;
+
+  }
 
   //Rendering Player
   playerController.renderPlayer();
   playerUI.renderGUI();
-  enemyController.renderEnemy();
+  spawnEnemy();
 
 }
 
+// Bullet Logic \\
 
 function mousePressed(){
     //If mouseX is not equal to playerX or mouseY is not equal to playerY
@@ -123,4 +150,60 @@ function Bullet(X,Y,PX,PY){
 
 }
 
-setInterval(() => frames = frameRate(), 500);
+// Enemy Logic \\
+
+function spawnEnemy(){
+  enemies.push( new Enemies(playerController.x, playerController.y))
+}
+
+function Enemies(PX, PY){
+
+  console.log("Enemy function")
+  
+  this.speed = 2;
+  this.playerx = PX;
+  this.playery = PY;
+  //this.dir = createVector(X-PX, Y-PY).normalize() //Use p5.Vector to calculate the normilized direction from player to 
+  this.r = 8;
+
+
+  //Show enemy when new Enemy is created in spawnEnemy() function
+  this.showEnemy = function(){
+
+      push();
+
+      console.log("show enemy")
+
+      stroke("#c9001b");
+      strokeWeight(4);
+      ellipse(100, 100, this.r * 2);
+
+      pop();
+
+  }
+
+  // Updates direction of enemy to player
+  this.toPlayer = function() {
+
+    if (this.playerx > this.x){
+      this.x += this.speed;
+    } else {
+      this.x -= this.speed;
+    }
+
+    if (this.playery > this.y){
+      this.y += this.speed;
+    } else{
+      this.y -= this.speed;
+    }
+
+  }
+  
+  // Verifies if the  is still in bounds of the screen
+  this.EnemyonScreen = function() {
+    return this.x > -this.r && this.x < width+this.r &&
+            this.y > -this.r && this.y < height+this.r;
+  }
+}
+
+//setInterval(() => frames = frameRate(), 500);
