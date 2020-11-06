@@ -28,7 +28,6 @@ function setup() {
 
   //Classes
   playerController = new Player();
-  enemyController = new Enemy();
   playerUI = new PlayerUI();
 
   //Changing Modes
@@ -62,7 +61,7 @@ function draw() {
     
     bullets[i].toMouse()
 
-    let hit = dist(bullets[i].x, bullets[i].y, enemyController.x, enemyController.y) <= enemyController.r;
+    let hit = dist(bullets[i].x, bullets[i].y, this.enemyx, this.enemyy) <= this.enemyr;
     anyBullethit = anyBullethit || hit
 
     // If bullets didn't hit and bullets are on screen then push bullets into keepbullets and show all bullets in array
@@ -97,9 +96,11 @@ function draw() {
 
   }
 
-  //Rendering Player
+  //Rendering Player and Player GUI
   playerController.renderPlayer();
   playerUI.renderGUI();
+
+  //Spawning
   spawnEnemy();
 
 }
@@ -144,8 +145,7 @@ function Bullet(X,Y,PX,PY){
     
     // Verifies if the bullet is still in bounds of the screen
     this.onScreen = function() {
-      return this.x > -this.r && this.x < width+this.r &&
-              this.y > -this.r && this.y < height+this.r;
+      return this.x > -this.r && this.x < width+this.r && this.y > -this.r && this.y < height+this.r;
     }
 
 }
@@ -153,18 +153,20 @@ function Bullet(X,Y,PX,PY){
 // Enemy Logic \\
 
 function spawnEnemy(){
-  enemies.push( new Enemies(playerController.x, playerController.y))
+  enemies.push( new Enemies(0, 0, playerController.x, playerController.y))
 }
 
-function Enemies(PX, PY){
-
-  console.log("Enemy function")
+function Enemies(X, Y, PX, PY){
   
   this.speed = 2;
+
   this.playerx = PX;
   this.playery = PY;
-  //this.dir = createVector(X-PX, Y-PY).normalize() //Use p5.Vector to calculate the normilized direction from player to 
-  this.r = 8;
+  this.enemyx = X;
+  this.enemyy = Y;
+
+  this.dir = createVector(X-PX, Y-PY).normalize()
+  this.enemyr = 42;
 
 
   //Show enemy when new Enemy is created in spawnEnemy() function
@@ -172,11 +174,9 @@ function Enemies(PX, PY){
 
       push();
 
-      console.log("show enemy")
-
       stroke("#c9001b");
       strokeWeight(4);
-      ellipse(100, 100, this.r * 2);
+      ellipse(this.enemyx, this.enemyy, this.enemyr * 2);
 
       pop();
 
@@ -185,24 +185,14 @@ function Enemies(PX, PY){
   // Updates direction of enemy to player
   this.toPlayer = function() {
 
-    if (this.playerx > this.x){
-      this.x += this.speed;
-    } else {
-      this.x -= this.speed;
-    }
-
-    if (this.playery > this.y){
-      this.y += this.speed;
-    } else{
-      this.y -= this.speed;
-    }
+    this.playerx += this.dir.enemyx * this.speed;
+    this.playery += this.dir.enemyy * this.speed;
 
   }
   
   // Verifies if the  is still in bounds of the screen
   this.EnemyonScreen = function() {
-    return this.x > -this.r && this.x < width+this.r &&
-            this.y > -this.r && this.y < height+this.r;
+    return this.enemyx > -this.enemyr && this.enemyx < width+this.enemyr && this.enemyy > -this.enemyr && this.enemyy < height+this.enemyr;
   }
 }
 
