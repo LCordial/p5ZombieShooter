@@ -79,9 +79,10 @@ function draw() {
 
   // Player for loop \\
 
+  // Same logic for bullets... but enemies
   for (let i=0; i < enemies.length; ++ i){
 
-    enemies[i].toPlayer()
+    enemies[i].toPlayer();enemies[i].checkCollision();
 
     let hit = dist(enemies[i].x, enemies[i].y, playerController.x, playerController.y) <= playerController.r
     anyEnemyhit = anyEnemyhit || hit;
@@ -89,8 +90,6 @@ function draw() {
     if (!hit && enemies[i].EnemyonScreen()){
       keepenemy.push(enemies[i]);
       enemies[i].showEnemy();
-
-      console.log("no hit")
     }
     enemies = keepenemy;
 
@@ -157,17 +156,15 @@ function spawnEnemy(){
 }
 
 function Enemies(X, Y, PX, PY){
-  
+
   this.speed = 2;
 
-  this.playerx = PX;
-  this.playery = PY;
-  this.enemyx = X;
-  this.enemyy = Y;
-
-  this.dir = createVector(X-PX, Y-PY).normalize()
-  this.enemyr = 42;
-
+  this.playerX = PX;
+  this.playerY = PY;
+  
+  this.enemyX = X;
+  this.enemyY = Y;
+  this.enemyR = 42; 
 
   //Show enemy when new Enemy is created in spawnEnemy() function
   this.showEnemy = function(){
@@ -176,7 +173,7 @@ function Enemies(X, Y, PX, PY){
 
       stroke("#c9001b");
       strokeWeight(4);
-      ellipse(this.enemyx, this.enemyy, this.enemyr * 2);
+      ellipse(this.enemyX, this.enemyY, this.enemyR * 2);
 
       pop();
 
@@ -185,14 +182,43 @@ function Enemies(X, Y, PX, PY){
   // Updates direction of enemy to player
   this.toPlayer = function() {
 
-    this.playerx += this.dir.enemyx * this.speed;
-    this.playery += this.dir.enemyy * this.speed;
+    if (this.playerY < this.enemyY){
+      this.enemyY -= this.speed;
+    } else if (this.playerY > this.enemyY) {
+      this.enemyY += this.speed;
+    }
+    if (this.playerX < this.enemyX){
+      this.enemyX -= this.speed;
+    } else if (this.playerX > this.enemyX){
+      this.enemyX += this.speed;
+    }
+
+    console.log(`Enemy Position: ${this.enemyX}, ${this.enemyY}, ${this.enemyR}`)
+
+  }
+
+  this.checkCollision = function(){
+
+    var hit = false;
+
+    // Making hit variable into Collide 2D external library
+    hit = collideCircleCircle(this.enemyX, this.enemyY, this.enemyR * 2, this.playerX, this.playerY, this.playerR * 2);
+
+    // If bullet has hit change playerHealth by player damage, else don't do anything
+    if(hit){
+        console.log(`${hit} & ${this.playerHealth}`);
+        
+        this.playerHealth -= this.damage;
+        playerUI.HealthGUI();        
+    }else{
+        console.log(`${hit}`);
+    }
 
   }
   
   // Verifies if the  is still in bounds of the screen
   this.EnemyonScreen = function() {
-    return this.enemyx > -this.enemyr && this.enemyx < width+this.enemyr && this.enemyy > -this.enemyr && this.enemyy < height+this.enemyr;
+    return this.enemyX > -this.enemyR && this.enemyX < width+this.enemyR && this.enemyY > -this.enemyR && this.enemyY < height+this.enemyR;
   }
 }
 
