@@ -1,5 +1,5 @@
-# Zombie Shooter ![License: MIT](https://img.shields.io/badge/license-MIT-brightgreen) ![GitHub issues](https://img.shields.io/github/issues/LCordial/p5ZombieShooter)
-`Zombie Shooter` is a survival game inspired by DIEP.io
+# Tanks Arena ![License: MIT](https://img.shields.io/badge/license-MIT-brightgreen) ![GitHub issues](https://img.shields.io/github/issues/LCordial/p5ZombieShooter)
+`Tanks Arena` is a top-down shooting game inspired by DEIP.io
 
 # How to play
 The game will get harder throughout your playthrough, with an increase of enemy spawn rate with health increases. Get as far as possible without dying.
@@ -7,11 +7,16 @@ The game will get harder throughout your playthrough, with an increase of enemy 
 # Installation
 Clone the repository onto your local computer using [git](https://git-scm.com/)
 ```
-https://github.com/LCordial/p5ZombieShooter.git
+git clone https://github.com/LCordial/p5ZombieShooter.git
 ```
-
 # Use
-> Go to [tanks.ambience.studio](https://tanks.ambience.studio) for stable release
+> Go to [tanks.ambience.studio](https://tanks.ambience.studio/) for the current stable release
+
+# Development
+Help development by joining the Ambience Studios discord server.
+
+# Assets
+All assests were drawn using p5.js.
 
 # Packages
 * [p5](https://p5js.org/)
