@@ -64,19 +64,19 @@ class Player {
 
         //Checking if key is down and taking away acceleration from the y/x velocity
         if (keyIsDown(this.wKey)){
-            // if(this.y + (-20) > 0)
+            if(this.y + (-20) > 0)
                 this.yVelocity -= this.acceleration;
         }
         if (keyIsDown(this.aKey)){
-            // if(this.y + (20) < height)
+            if(this.y + (20) < height)
                 this.yVelocity += this.acceleration;
         }
         if (keyIsDown(this.sKey)){
-            // if(this.x + (-20) > 0)
+            if(this.x + (-20) > 0)
                 this.xVelocity -= this.acceleration;
         }
         if (keyIsDown(this.dKey)){
-            // if(this.x + (20) < width)
+            if(this.x + (20) < width)
              this.xVelocity += this.acceleration;
         }
         
