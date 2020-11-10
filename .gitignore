@@ -69,3 +69,4 @@ node_modules/
 
 # Coming later
 /src/data/damage.json
+/src/modules
