@@ -58,15 +58,9 @@ class PlayerUI{
 
     }
 
-    scoreGUI(){
-
-        textSize(40);
-
-    }
-
     renderGUI(){
 
-        this.HealthGUI();
+        //this.HealthGUI();
         //this.AmmoGUI();
         this.waveGUI();
         this.killsGUI()

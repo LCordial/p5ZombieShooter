@@ -1,20 +1,19 @@
 /// <reference path="./modules/p5.d.ts" />
 
 //Creating Variables
-var playerController; //Contains the Player.js class
-var enemyController;
-var playerUI;
+var playerController; // Contains the Player.js class
+var enemyController; // Contains the Enemy.js class
+var playerUI; // Contains the PlayerUI.js class
 
 var originalFr = 60; // Capping Frame Rate
 
-var canvasX = 1368;
-var canvasY = 780;
+var canvasX = 1368; // X Canvas size
+var canvasY = 780; // Y Canvas size
 
-var bullets = [];
-var enemies = [];
+var bullets = []; // Bullet Array
 
-var score = 0;
-let frames = 60;
+var score = 0; // Score
+let frames = 60; // Frams
 
 
 
@@ -29,12 +28,16 @@ function setup() {
   //Classes
   playerController = new Player();
   playerUI = new PlayerUI();
+  enemyController = new Enemy();
 
   //Changing Modes
   rectMode(CENTER);
   angleMode(RADIANS);
 
   console.log(" ✅ Setup Finished")
+
+  //noLoop();
+  //canvasX.hide();canvasY.hide();
 
 }
 
@@ -44,15 +47,17 @@ function draw() {
   let keepbullets = []
   let anyBullethit = false;
 
-  // Enemy Variables
-  let keepenemy = []
-  let anyEnemyhit = false;
-
   // Drawning Canvas Background every frame
   background("#d9d9d9")
   textSize(20);
   text(Math.round(frames), 20, 30);
-  text("");
+
+  push();
+
+  textSize(40);
+  text(`${score}`, 400,50);
+
+  pop();
 
   // Bullet for loop \\
 
@@ -61,7 +66,7 @@ function draw() {
     
     bullets[i].toMouse()
 
-    let hit = dist(bullets[i].x, bullets[i].y, this.enemyx, this.enemyy) <= this.enemyr;
+    let hit = dist(bullets[i].x, bullets[i].y, enemyController.enemyX, enemyController.enemyY) <= enemyController.enemyR;
     anyBullethit = anyBullethit || hit
 
     // If bullets didn't hit and bullets are on screen then push bullets into keepbullets and show all bullets in array
@@ -77,30 +82,11 @@ function draw() {
 
 } 
 
-  // Player for loop \\
-
-  // Same logic for bullets... but enemies
-  for (let i=0; i < enemies.length; ++ i){
-
-    enemies[i].toPlayer();enemies[i].checkCollision();
-
-    let hit = dist(enemies[i].x, enemies[i].y, playerController.x, playerController.y) <= playerController.r
-    anyEnemyhit = anyEnemyhit || hit;
-
-    if (!hit && enemies[i].EnemyonScreen()){
-      keepenemy.push(enemies[i]);
-      enemies[i].showEnemy();
-    }
-    enemies = keepenemy;
-
-  }
-
-  //Rendering Player and Player GUI
+  //Rendering Player, Player GUI and Enemy
   playerController.renderPlayer();
   playerUI.renderGUI();
+  enemyController.renderEnemy();
 
-  //Spawning
-  spawnEnemy();
 
 }
 
@@ -149,77 +135,14 @@ function Bullet(X,Y,PX,PY){
 
 }
 
-// Enemy Logic \\
 
-function spawnEnemy(){
-  enemies.push( new Enemies(0, 0, playerController.x, playerController.y))
-}
+// function startGame(){
+//   loop();
+//   canvasX.show();canvasY.show();
 
-function Enemies(X, Y, PX, PY){
+//   console.log("Start Game")
+// }
 
-  this.speed = 2;
 
-  this.playerX = PX;
-  this.playerY = PY;
-  
-  this.enemyX = X;
-  this.enemyY = Y;
-  this.enemyR = 42; 
-
-  //Show enemy when new Enemy is created in spawnEnemy() function
-  this.showEnemy = function(){
-
-      push();
-
-      stroke("#c9001b");
-      strokeWeight(4);
-      ellipse(this.enemyX, this.enemyY, this.enemyR * 2);
-
-      pop();
-
-  }
-
-  // Updates direction of enemy to player
-  this.toPlayer = function() {
-
-    if (this.playerY < this.enemyY){
-      this.enemyY -= this.speed;
-    } else if (this.playerY > this.enemyY) {
-      this.enemyY += this.speed;
-    }
-    if (this.playerX < this.enemyX){
-      this.enemyX -= this.speed;
-    } else if (this.playerX > this.enemyX){
-      this.enemyX += this.speed;
-    }
-
-    console.log(`Enemy Position: ${this.enemyX}, ${this.enemyY}, ${this.enemyR}`)
-
-  }
-
-  this.checkCollision = function(){
-
-    var hit = false;
-
-    // Making hit variable into Collide 2D external library
-    hit = collideCircleCircle(this.enemyX, this.enemyY, this.enemyR * 2, this.playerX, this.playerY, this.playerR * 2);
-
-    // If bullet has hit change playerHealth by player damage, else don't do anything
-    if(hit){
-        console.log(`${hit} & ${this.playerHealth}`);
-        
-        this.playerHealth -= this.damage;
-        playerUI.HealthGUI();        
-    }else{
-        console.log(`${hit}`);
-    }
-
-  }
-  
-  // Verifies if the  is still in bounds of the screen
-  this.EnemyonScreen = function() {
-    return this.enemyX > -this.enemyR && this.enemyX < width+this.enemyR && this.enemyY > -this.enemyR && this.enemyY < height+this.enemyR;
-  }
-}
 
 //setInterval(() => frames = frameRate(), 500);
