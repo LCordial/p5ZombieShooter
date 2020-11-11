@@ -5,7 +5,7 @@
 The game will get harder throughout your playthrough, with an increase of enemy spawn rate with health increases. Get as far as possible without dying.
 
 # Installation
-Clone the repository onto your local computer using [git](https://git-scm.com/)
+Clone the repository onto your local computer using [git](https://git-scm.com/). THe p5.js module is not currently in the project, meaning that it will not work.
 ```
 git clone https://github.com/LCordial/p5ZombieShooter.git
 ```
