@@ -51,19 +51,12 @@ class PlayerUI{
 
     }
 
-    killsGUI(){
-
-        textSize(40);
-        text(`${this.PlayerKills} kills`, 250, 50)
-
-    }
 
     renderGUI(){
 
         //this.HealthGUI();
         //this.AmmoGUI();
         this.waveGUI();
-        this.killsGUI()
         
     }
 }

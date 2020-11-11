@@ -1,5 +1,3 @@
-/// <reference path="./modules/p5.d.ts" />
-
 //Creating Variables
 var playerController; // Contains the Player.js class
 var enemyController; // Contains the Enemy.js class
@@ -13,6 +11,7 @@ var canvasY = 780; // Y Canvas size
 var bullets = []; // Bullet Array
 
 var score = 0; // Score
+var kills = 0;
 let frames = 60; // Frams
 
 
@@ -54,8 +53,15 @@ function draw() {
 
   push();
 
-  textSize(40);
-  text(`${score}`, 400,50);
+    textSize(40);
+    text(`${score}`, 400,50);
+
+  pop();
+
+  push();
+
+    textSize(40);
+    text(`${kills} kills`, 250, 50)
 
   pop();
 
@@ -78,6 +84,8 @@ function draw() {
 
     if (anyBullethit) {
       score += 100;
+      kills += 1;
+      enemyController = new Enemy();
   }
 
 } 
@@ -145,4 +153,4 @@ function Bullet(X,Y,PX,PY){
 
 
 
-//setInterval(() => frames = frameRate(), 500);
+setInterval(() => frames = frameRate(), 500);

@@ -1,12 +1,12 @@
 class Enemy{
     constructor(){
         
-        this.speed = 2;
+        this.speed = Math.floor(Math.random() * 4) + 2;
         this.damage = 1;
 
-        this.enemyX = 0;
-        this.enemyY = 0;
-        this.enemyR = 42; 
+        this.enemyX = Math.floor(Math.random() * 10) + 1;
+        this.enemyY = Math.floor(Math.random() * 1000) + 10;
+        this.enemyR = Math.floor(Math.random() * 32) + 30; 
 
     }
 
@@ -48,20 +48,20 @@ class Enemy{
 
     checkCollision(){
 
-        var hit = false;
+        // var hit = false;
     
-        // Making hit variable into Collide 2D external library
-        hit = collideCircleCircle(this.enemyX, this.enemyY, this.enemyR * 2, this.playerX, this.playerY, this.playerR * 2);
+        // // Making hit variable into Collide 2D external library
+        // hit = collideCircleCircle(this.enemyX, this.enemyY, this.enemyR * 2, this.playerX, this.playerY, this.playerR * 2);
     
-        // If bullet has hit change playerHealth by player damage, else don't do anything
-        if(hit){
-            console.log(`${hit} & ${this.playerHealth}`);
+        // // If bullet has hit change playerHealth by player damage, else don't do anything
+        // if(hit){
+        //     console.log(`${hit} & ${this.playerHealth}`);
             
-            playerController.health -= this.damage;
-            playerUI.HealthGUI();        
-        }else{
-            console.log(`${hit}`);
-        }
+        //     playerController.health -= this.damage;
+        //     playerUI.HealthGUI();        
+        // }else{
+        //     console.log(`${hit}`);
+        // }
     
       }
 
