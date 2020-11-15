@@ -6,7 +6,7 @@ class Enemy{
 
         this.enemyX = Math.floor(Math.random() * 10) + 1;
         this.enemyY = Math.floor(Math.random() * 1000) + 10;
-        this.enemyR = Math.floor(Math.random() * 32) + 30; 
+        this.enemyR = Math.floor(Math.random() * 25) + 20; 
 
     }
 
@@ -15,6 +15,7 @@ class Enemy{
         // Grabbing Player Position every time draw is called
         this.playerX = playerController.x;
         this.playerY = playerController.y;
+        this.playerR = playerController.r;
 
     }
 
@@ -48,20 +49,19 @@ class Enemy{
 
     checkCollision(){
 
-        // var hit = false;
+        var hit = false;
     
-        // // Making hit variable into Collide 2D external library
-        // hit = collideCircleCircle(this.enemyX, this.enemyY, this.enemyR * 2, this.playerX, this.playerY, this.playerR * 2);
+        // Making hit variable into Collide 2D external library
+        hit = collideCircleCircle(this.enemyX, this.enemyY, this.enemyR * 2, this.playerX, this.playerY, this.playerR * 2);
     
-        // // If bullet has hit change playerHealth by player damage, else don't do anything
-        // if(hit){
-        //     console.log(`${hit} & ${this.playerHealth}`);
+        // If bullet has hit change playerHealth by player damage, else don't do anything
+        if(hit){
+            console.log(`${hit} & ${playerController.health}`);
             
-        //     playerController.health -= this.damage;
-        //     playerUI.HealthGUI();        
-        // }else{
-        //     console.log(`${hit}`);
-        // }
+            playerController.health -= this.damage;   
+        }else{
+            console.log(`${hit}`);
+        }
     
       }
 

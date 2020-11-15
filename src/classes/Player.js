@@ -25,7 +25,7 @@ class Player {
         this.dKey = 68;
 
         //Information Variables
-        this.health = 100;
+        this.health = 200;
         this.ammo = 20;
         this.kills = 0;
         this.waves = 0;

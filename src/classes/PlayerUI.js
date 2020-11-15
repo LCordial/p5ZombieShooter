@@ -10,37 +10,13 @@ class PlayerUI{
     
     HealthGUI(){
        
-        push();
 
-        textAlign(CENTER, CENTER)
-
-        textSize(35);
-
-        //Changing color of health text once health has reached certain threshold
-        if(this.Playerhealth >= 1){
-            fill("#f54a00");
-            if(this.Playerhealth >= 25){
-                fill("#f5c000")
-                if(this.Playerhealth >= 50){
-                    fill("#08cc33");
-                }
-            }
-        }
-        
-        text(`${this.Playerhealth}`, playerController.x + -10, playerController.y - 50);
-
-        pop();
         
     }
 
     AmmoGUI(){
 
-        push();
 
-        textSize(25);
-        text(`${this.PlayerAmmo}`, playerController.x -12, playerController.y + 65);
-
-        pop();
         
     }
 
@@ -54,8 +30,8 @@ class PlayerUI{
 
     renderGUI(){
 
-        //this.HealthGUI();
-        //this.AmmoGUI();
+        this.HealthGUI();
+        this.AmmoGUI();
         this.waveGUI();
         
     }

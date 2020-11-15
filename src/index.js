@@ -51,19 +51,47 @@ function draw() {
   textSize(20);
   text(Math.round(frames), 20, 30);
 
+
+  //#region GUI
   push();
 
     textSize(40);
     text(`${score}`, 400,50);
+    text(`${kills} kills`, 250, 50)
 
   pop();
 
   push();
 
-    textSize(40);
-    text(`${kills} kills`, 250, 50)
+      textAlign(CENTER, CENTER)
+
+      textSize(35);
+
+      //Changing color of health text once health has reached certain threshold
+      if(playerController.health >= 1){
+          fill("#f54a00");
+          if(playerController.health >= 25){
+              fill("#f5c000")
+              if(playerController.health >= 75){
+                  fill("#08cc33");
+              }
+          }
+      }
+      
+      text(`${playerController.health}`, playerController.x , playerController.y - 50);
 
   pop();
+
+  push();
+
+  textAlign(CENTER, CENTER)    
+
+    textSize(25);
+    text(`${playerController.ammo}`, playerController.x -12, playerController.y + 65);
+
+  pop();
+
+  //#endregion
 
   // Bullet for loop \\
 
@@ -105,6 +133,7 @@ function mousePressed(){
     if (mouseX != playerController.x || mouseY != playerController.y ) {
         //Push new bullet into array and create new Bullet while passing in variables
         bullets.push( new Bullet(mouseX,mouseY,playerController.x,playerController.y) )
+        
     }
 }
 
