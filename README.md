@@ -5,10 +5,16 @@
 The game will get harder throughout your playthrough, with an increase of enemy spawn rate with health increases. Get as far as possible without dying.
 
 # Installation
-Clone the repository onto your local computer using [git](https://git-scm.com/). THe p5.js module is not currently in the project, meaning that it will not work.
+Clone the repository onto your local computer using [git](https://git-scm.com/). 
 ```
 git clone https://github.com/LCordial/p5ZombieShooter.git
 ```
+
+The game will not work without the p5.js module. Replace the p5.js link in the `index.html` file with 
+```
+<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+```
+
 # Use
 > Go to [tanks.ambience.studio](https://tanks.ambience.studio/) for the current stable release
 
