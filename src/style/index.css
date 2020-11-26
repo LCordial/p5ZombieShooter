@@ -1,3 +1,22 @@
 body{
     background-color: black;
+    padding:0; 
+    margin:0;
+}
+
+.title{
+    color: black;
+    font-family: Roboto;
+}
+
+.Main-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+    color: white;
+}
+.startButton{
+    text-align: center;
 }

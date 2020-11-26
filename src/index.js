@@ -7,26 +7,28 @@ var originalFr = 60; // Capping Frame Rate
 
 var canvasX = 1368; // X Canvas size
 var canvasY = 780; // Y Canvas size
+var canvas;
 
 var bullets = []; // Bullet Array
 
 var score = 0; // Score
-var kills = 0;
-let frames = 60; // Frams
+var kills = 0; // Kills
+var waves = 0;
+let frames = 60; // Frames
 
+var mainMenu = document.querySelector('main');
 
 
 function setup() {
 
   //Window Width of Canvas
-  createCanvas(canvasX, canvasY);
+  canvas = createCanvas(canvasX, canvasY);
 
   //Framerate
   frameRate(originalFr); 
 
   //Classes
   playerController = new Player();
-  playerUI = new PlayerUI();
   enemyController = new Enemy();
 
   //Changing Modes
@@ -35,8 +37,10 @@ function setup() {
 
   console.log(" ✅ Setup Finished")
 
-  //noLoop();
-  //canvasX.hide();canvasY.hide();
+
+  // mainMenu.style.color = "white";
+  // noLoop();
+  // canvas.hide();
 
 }
 
@@ -53,11 +57,13 @@ function draw() {
 
 
   //#region GUI
+
   push();
 
     textSize(40);
     text(`${score}`, 400,50);
     text(`${kills} kills`, 250, 50)
+    text(`${waves} waves`, 70, 50)
 
   pop();
 
@@ -68,7 +74,7 @@ function draw() {
       textSize(35);
 
       //Changing color of health text once health has reached certain threshold
-      if(playerController.health >= 1){
+      if(playerController.health >= 10){
           fill("#f54a00");
           if(playerController.health >= 25){
               fill("#f5c000")
@@ -82,17 +88,19 @@ function draw() {
 
   pop();
 
-  push();
+  // Ammo to be written later
+  // push();
 
-  textAlign(CENTER, CENTER)    
+  //   textAlign(CENTER, CENTER)    
 
-    textSize(25);
-    text(`${playerController.ammo}`, playerController.x -12, playerController.y + 65);
+  //   textSize(25);
+  //   text(`${playerController.ammo}`, playerController.x, playerController.y + 50);
 
-  pop();
+  // pop();
+
 
   //#endregion
-
+  
   // Bullet for loop \\
 
   // Traverse the bullets in the draw function. Check if a bullet has hit an enemy or has left the screen. Keep the bullets for next run of draw
@@ -118,15 +126,35 @@ function draw() {
 
 } 
 
-  //Rendering Player, Player GUI and Enemy
+  //Rendering Player and Enemy
   playerController.renderPlayer();
-  playerUI.renderGUI();
   enemyController.renderEnemy();
 
+  // Game over screen
+  if (playerController.health <= -1 ){
+
+    push()
+
+      textSize(50)
+      text("Gameover", 550, 400)
+
+    pop()
+
+    push()
+
+      textAlign(CENTER, CENTER)
+      textSize(25)
+      text("Press `control r` to restart", 672  , 500)
+
+    pop()
+
+    noLoop();
+  }
 
 }
 
-// Bullet Logic \\
+
+//#region Bullet Logic \\
 
 function mousePressed(){
     //If mouseX is not equal to playerX or mouseY is not equal to playerY
@@ -172,14 +200,14 @@ function Bullet(X,Y,PX,PY){
 
 }
 
+//#endregion
+
 
 // function startGame(){
-//   loop();
-//   canvasX.show();canvasY.show();
+//   mainMenu.style.display = "none";
 
-//   console.log("Start Game")
+//   canvas.show();
+//   loop();
 // }
 
-
-
-setInterval(() => frames = frameRate(), 500);
+//setInterval(() => frames = frameRate(), 500);

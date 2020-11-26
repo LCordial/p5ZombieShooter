@@ -1,7 +1,8 @@
 class Enemy{
     constructor(){
         
-        this.speed = Math.floor(Math.random() * 4) + 2;
+        this.speed = Math.floor(Math.random() * 6) + 2;
+        
         this.damage = 1;
 
         this.enemyX = Math.floor(Math.random() * 10) + 1;
