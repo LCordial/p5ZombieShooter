@@ -1,41 +1,34 @@
 <html>
-    <head>
+  <head>
+    <title>Tanks</title>
 
-        <title>Tanks</title>
+    <meta name="description" content="A Top-down based game" />
 
-        <meta name="description" content="A Top-down based game"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Linking Styles -->
 
-        <!-- Linking Styles -->
-
-        <link rel="stylesheet" href="./style/index.css">
-
-
-    </head>
-    <body>
-
-        <!-- <div class="main">
+    <link rel="stylesheet" href="./style/index.scss" />
+  </head>
+  <body>
+    <!-- <div class="main">
             <h1 class="title">Tanks</h1>
             <button class="startButton" onclick="startGame()">Start</button>
         </div> -->
 
+    <!--Linking p5-->
 
-        <!--Linking p5-->
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
 
-        <script defer src="https://unpkg.com/p5.collide2d"></script>
-        <script src="./modules/p5.js"></script>
+    <!--Linking Classes-->
 
-        <!--Linking Classes-->
+    <script src="./classes/Player.js"></script>
+    <script src="./classes/Enemy.js"></script>
 
-        <script src="./classes/Player.js"></script>
-        <script src="./classes/Enemy.js"></script>
+    <!--Linking sketch.js-->
 
-        <!--Linking sketch.js-->
-        
-        <script src="./index.js"></script>    
-
-    </body>
-    
+    <script src="./index.js"></script>
+  </body>
 </html>
