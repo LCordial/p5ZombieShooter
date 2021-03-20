@@ -22,10 +22,6 @@ git clone https://github.com/LCordial/p5ZombieShooter.git
 
 The game will not work without the p5.js module. Replace the p5.js link in the `index.html` file with
 
-```
-<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-```
-
 # Use
 
 > Go to [tanks.ambience.studio](https://tanks.ambience.studio/) for the current stable release
